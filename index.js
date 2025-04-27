@@ -1,40 +1,25 @@
 const express = require('express');
 const path = require('path');
-const { exec } = require('child_process'); // Para ejecutar comandos del sistema
+const { exec } = require('child_process');
 const app = express();
 
-// Ruta principal para ejecutar GAMA_FAMILIAR.php
+// Ruta principal para levantar servidor PHP
 app.get('/', (req, res) => {
-  exec('php ' + path.join(__dirname, 'GAMA_FAMILIAR', 'GAMA_FAMILIAR.php'), (err, stdout, stderr) => {
+  exec('php -S 0.0.0.0:8080 -t ' + path.join(__dirname, 'GAMA_FAMILIAR'), (err, stdout, stderr) => {
     if (err) {
-      console.error('Error ejecutando el archivo PHP:', err);
-      return res.status(500).send('Error ejecutando el archivo PHP: ' + err.message);
+      console.error('Error ejecutando el servidor PHP:', err);
+      return res.status(500).send('Error ejecutando el servidor PHP: ' + err.message);
     }
     if (stderr) {
       console.error('stderr:', stderr);
-      return res.status(500).send('Error en la ejecución de PHP: ' + stderr);
+      // A veces PHP lanza stderr como advertencia, pero igual funciona
     }
-    res.send(stdout);
+    res.send('Servidor PHP corriendo en http://localhost:8080/GAMA_FAMILIAR.php');
   });
 });
 
-// Configurar express para servir archivos estáticos (como imágenes y carpetas)
-app.use('/imagenes', express.static(path.join(__dirname, 'public', 'imagenes')));
-app.use('/GAMA_FAMILIAR', express.static(path.join(__dirname, 'GAMA_FAMILIAR')));
-app.use('/GAMA_MEDIA', express.static(path.join(__dirname, 'GAMA_MEDIA')));
-
-// Ruta para servir el archivo PHP de Gama Familiar
-app.get('/GAMA_FAMILIAR/GAMA_FAMI.php', (req, res) => {
-  res.sendFile(path.join(__dirname, 'GAMA_FAMILIAR', 'GAMA_FAMI.php'));
-});
-
-// Ruta para servir el archivo PHP de Gama Media
-app.get('/GAMA_MEDIA/GAMA_MEDIAA.php', (req, res) => {
-  res.sendFile(path.join(__dirname, 'GAMA_MEDIA', 'GAMA_MEDIAA.php'));
-});
-
-// Puerto donde el servidor escuchará
+// Node escuchando
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`Servidor corriendo en puerto ${port}`);
+  console.log(`Servidor Node corriendo en puerto ${port}`);
 });
