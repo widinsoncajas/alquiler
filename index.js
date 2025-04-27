@@ -24,8 +24,7 @@ app.get('/', (req, res) => {
 
 // Configurar express para servir archivos estáticos (como imágenes y carpetas)
 app.use('/imagenes', express.static(path.join(__dirname, 'public', 'imagenes')));
-app.use('/GAMA_FAMILIAR', express.static(path.join(__dirname, 'GAMA_FAMILIAR')));
-app.use('/GAMA_MEDIA', express.static(path.join(__dirname, 'GAMA_MEDIA')));
+
 
 // Redireccionar las rutas para que PHP las ejecute
 app.get('/GAMA_FAMILIAR/GAMA_FAMI.php', (req, res) => {
