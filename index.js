@@ -3,21 +3,17 @@ const path = require('path');
 const { exec } = require('child_process'); // Para ejecutar comandos del sistema
 const app = express();
 
-// Ruta para ejecutar y servir el archivo PHP principal
+// Ruta principal para ejecutar GAMA_FAMILIAR.php
 app.get('/', (req, res) => {
-  // Comando para ejecutar el archivo PHP
-  exec('php ' + path.join(__dirname, 'inicio.php'), (err, stdout, stderr) => {
+  exec('php ' + path.join(__dirname, 'GAMA_FAMILIAR', 'GAMA_FAMILIAR.php'), (err, stdout, stderr) => {
     if (err) {
-      // Si hay un error, muestra el error
       console.error('Error ejecutando el archivo PHP:', err);
       return res.status(500).send('Error ejecutando el archivo PHP: ' + err.message);
     }
     if (stderr) {
-      // Si hay errores en stderr, muestra esos errores
       console.error('stderr:', stderr);
       return res.status(500).send('Error en la ejecución de PHP: ' + stderr);
     }
-    // Si no hay errores, responde con la salida del archivo PHP
     res.send(stdout);
   });
 });
