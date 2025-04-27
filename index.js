@@ -28,11 +28,11 @@ app.use('/imagenes', express.static(path.join(__dirname, 'public', 'imagenes')))
 
 // Redireccionar las rutas para que PHP las ejecute
 app.get('/GAMA_FAMILIAR/GAMA_FAMI.php', (req, res) => {
-  res.redirect('http://localhost:8080/GAMA_FAMI.php');
+  res.redirect('http://localhost:8082/GAMA_FAMI.php');
 });
 
 app.get('/GAMA_MEDIA/GAMA_MEDIAA.php', (req, res) => {
-  res.redirect('http://localhost:8080/GAMA_MEDIAA.php');
+  res.redirect('http://localhost:8082/GAMA_MEDIAA.php');
 });
 
 
