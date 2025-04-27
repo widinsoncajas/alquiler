@@ -27,15 +27,15 @@ app.use('/imagenes', express.static(path.join(__dirname, 'public', 'imagenes')))
 app.use('/GAMA_FAMILIAR', express.static(path.join(__dirname, 'GAMA_FAMILIAR')));
 app.use('/GAMA_MEDIA', express.static(path.join(__dirname, 'GAMA_MEDIA')));
 
-// Ruta para servir el archivo PHP de Gama Familiar
+// Redireccionar las rutas para que PHP las ejecute
 app.get('/GAMA_FAMILIAR/GAMA_FAMI.php', (req, res) => {
-  res.sendFile(path.join(__dirname, 'GAMA_FAMILIAR', 'GAMA_FAMI.php'));
+  res.redirect('http://localhost:8082/GAMA_FAMI.php');
 });
 
-// Ruta para servir el archivo PHP de Gama Media
 app.get('/GAMA_MEDIA/GAMA_MEDIAA.php', (req, res) => {
-  res.sendFile(path.join(__dirname, 'GAMA_MEDIA', 'GAMA_MEDIAA.php'));
+  res.redirect('http://localhost:8082/GAMA_MEDIAA.php');
 });
+
 
 // Puerto donde el servidor escuchará
 const port = process.env.PORT || 3000;
