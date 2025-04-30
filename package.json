@@ -1,8 +1,14 @@
 {
+<<<<<<< HEAD
+  "name": "CAMARO_RAPTOR",
+  "version": "1.0.0",
+  "main": "index.js",
+=======
   "name": "CAMARO_RAPTOR",             // Nombre de tu proyecto
   "version": "1.0.0",                  // Versión actual del proyecto
   "description": "Proyecto de gestión de vehículos",  // Descripción de tu proyecto
   "main": "index.js",                  // Archivo principal de la aplicación
+>>>>>>> a029155cf33de336503286ec74066d902db0d2d0
   "scripts": {
     "start": "node index.js"           // Comando para iniciar la aplicación, ejecutando `node index.js`
   },
