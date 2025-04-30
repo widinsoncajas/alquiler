@@ -7,15 +7,15 @@ app.use('/imagenes', express.static(path.join(__dirname, 'public', 'imagenes')))
 
 // Definir las rutas de redirección a PHP
 app.get('/', (req, res) => {
-  res.redirect('http://localhost:8082/inicio.php');  // Redirecciona a la página PHP en tu servidor local
+  res.redirect('http://localhost:8080/inicio.php');  // Redirecciona a la página PHP en tu servidor local
 });
 
 app.get('/GAMA_FAMILIAR/GAMA_FAMI.php', (req, res) => {
-  res.redirect('http://localhost:8082/GAMA_FAMI.php');
+  res.redirect('http://localhost:8080/GAMA_FAMI.php');
 });
 
 app.get('/GAMA_MEDIA/GAMA_MEDIAA.php', (req, res) => {
-  res.redirect('http://localhost:8082/GAMA_MEDIAA.php');
+  res.redirect('http://localhost:8080/GAMA_MEDIAA.php');
 });
 
 // Establecer el puerto para Express (3000 o cualquier otro puerto que desees)
